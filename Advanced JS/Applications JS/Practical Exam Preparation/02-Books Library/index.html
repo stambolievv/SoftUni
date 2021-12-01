@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Online Books Library</title>
+</head>
+
+<body>
+    <div id="container">
+
+        <header id="site-header">
+            <!-- Navigation -->
+            <nav class="navbar">
+                <section class="navbar-dashboard">
+                    <a href="#">Dashboard</a>
+                    <!-- Guest users -->
+                    <div id="guest">
+                        <a class="button" href="#">Login</a>
+                        <a class="button" href="#">Register</a>
+                    </div>
+                    <!-- Logged-in users -->
+                    <div id="user">
+                        <span>Welcome, {email}</span>
+                        <a class="button" href="#">My Books</a>
+                        <a class="button" href="#">Add Book</a>
+                        <a class="button" href="#">Logout</a>
+                    </div>
+                </section>
+            </nav>
+        </header>
+        <!-- Main Content -->
+        <main id="site-content"></main>
+
+        <!-- Dashboard Page ( for Guests and Users ) -->
+        <section id="dashboard-page" class="dashboard">
+            <h1>Dashboard</h1>
+            <!-- Display ul: with list-items for All books (If any) -->
+            <ul class="other-books-list">
+                <li class="otherBooks">
+                    <h3>A Court of Thorns and Roses</h3>
+                    <p>Type: Fiction</p>
+                    <p class="img"><img src="./images/book1.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+
+                <li class="otherBooks">
+                    <h3>Outlander</h3>
+                    <p>Type: Other</p>
+                    <p class="img"><img src="/images/book2.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+
+                <li class="otherBooks">
+                    <h3>To Kill a Mockingbird</h3>
+                    <p>Type: Classic</p>
+                    <p class="img"><img src="/images/book3.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+            </ul>
+            <!-- Display paragraph: If there are no books in the database -->
+            <p class="no-books">No books in database!</p>
+        </section>
+
+        <!-- Login Page ( Only for Guest users ) -->
+        <section id="login-page" class="login">
+            <form id="login-form" action="" method="">
+                <fieldset>
+                    <legend>Login Form</legend>
+                    <p class="field">
+                        <label for="email">Email</label>
+                        <span class="input">
+                            <input type="text" name="email" id="email" placeholder="Email">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="password">Password</label>
+                        <span class="input">
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </span>
+                    </p>
+                    <input class="button submit" type="submit" value="Login">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Register Page ( Only for Guest users ) -->
+        <section id="register-page" class="register">
+            <form id="register-form" action="" method="">
+                <fieldset>
+                    <legend>Register Form</legend>
+                    <p class="field">
+                        <label for="email">Email</label>
+                        <span class="input">
+                            <input type="text" name="email" id="email" placeholder="Email">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="password">Password</label>
+                        <span class="input">
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="repeat-pass">Repeat Password</label>
+                        <span class="input">
+                            <input type="password" name="confirm-pass" id="repeat-pass" placeholder="Repeat Password">
+                        </span>
+                    </p>
+                    <input class="button submit" type="submit" value="Register">
+                </fieldset>
+            </form>
+        </section>
+
+
+        <!-- Details Page ( for Guests and Users ) -->
+        <section id="details-page" class="details">
+            <div class="book-information">
+                <h3>A Court of Thorns and Roses</h3>
+                <p class="type">Type: Fiction</p>
+                <p class="img"><img src="/images/book1.png"></p>
+                <div class="actions">
+                    <!-- Edit/Delete buttons ( Only for creator of this book )  -->
+                    <a class="button" href="#">Edit</a>
+                    <a class="button" href="#">Delete</a>
+
+                    <!-- Bonus -->
+                    <!-- Like button ( Only for logged-in users, which is not creators of the current book ) -->
+                    <a class="button" href="#">Like</a>
+
+                    <!-- ( for Guests and Users )  -->
+                    <div class="likes">
+                        <img class="hearts" src="/images/heart.png">
+                        <span id="total-likes">Likes: 0</span>
+                    </div>
+                    <!-- Bonus -->
+                </div>
+            </div>
+            <div class="book-description">
+                <h3>Description:</h3>
+                <p>Feyre's survival rests upon her ability to hunt and kill – the forest where she lives is a cold,
+                    bleak place in the long winter months. So when she spots a deer in the forest being pursued by a
+                    wolf, she cannot resist fighting it for the flesh. But to do so, she must kill the predator and
+                    killing something so precious comes at a price ...</p>
+            </div>
+        </section>
+
+        <!-- Create Page ( Only for logged-in users ) -->
+        <section id="create-page" class="create">
+            <form id="create-form" action="" method="">
+                <fieldset>
+                    <legend>Add new Book</legend>
+                    <p class="field">
+                        <label for="title">Title</label>
+                        <span class="input">
+                            <input type="text" name="title" id="title" placeholder="Title">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="description">Description</label>
+                        <span class="input">
+                            <textarea name="description" id="description" placeholder="Description"></textarea>
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="image">Image</label>
+                        <span class="input">
+                            <input type="text" name="imageUrl" id="image" placeholder="Image">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="type">Type</label>
+                        <span class="input">
+                            <select id="type" name="type">
+                                <option value="Fiction">Fiction</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Mistery">Mistery</option>
+                                <option value="Classic">Clasic</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                    <input class="button submit" type="submit" value="Add Book">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Edit Page ( Only for the creator )-->
+        <section id="edit-page" class="edit">
+            <form id="edit-form" action="#" method="">
+                <fieldset>
+                    <legend>Edit my Book</legend>
+                    <p class="field">
+                        <label for="title">Title</label>
+                        <span class="input">
+                            <input type="text" name="title" id="title" value="A Court of Thorns and Roses">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="description">Description</label>
+                        <span class="input">
+                            <textarea name="description"
+                                id="description">Feyre's survival rests upon her ability to hunt and kill – the forest where she lives is a cold, bleak place in the long winter months. So when she spots a deer in the forest being pursued by a wolf, she cannot resist fighting it for the flesh. But to do so, she must kill the predator and killing something so precious comes at a price ...</textarea>
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="image">Image</label>
+                        <span class="input">
+                            <input type="text" name="imageUrl" id="image" value="/images/book1.png">
+                        </span>
+                    </p>
+                    <p class="field">
+                        <label for="type">Type</label>
+                        <span class="input">
+                            <select id="type" name="type" value="Fiction">
+                                <option value="Fiction" selected>Fiction</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Mistery">Mistery</option>
+                                <option value="Classic">Clasic</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                    <input class="button submit" type="submit" value="Save">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- My Books Page ( Only for logged-in users ) -->
+        <section id="my-books-page" class="my-books">
+            <h1>My Books</h1>
+            <!-- Display ul: with list-items for every user's books (if any) -->
+            <ul class="my-books-list">
+                <li class="otherBooks">
+                    <h3>Outlander</h3>
+                    <p>Type: Other</p>
+                    <p class="img"><img src="/images/book2.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+                <li class="otherBooks">
+                    <h3>A Court of Thorns and Roses</h3>
+                    <p>Type: Fiction</p>
+                    <p class="img"><img src="/images/book1.png"></p>
+                    <a class="button" href="#">Details</a>
+                </li>
+            </ul>
+
+            <!-- Display paragraph: If the user doesn't have his own books  -->
+            <p class="no-books">No books in database!</p>
+        </section>
+
+        <footer id="site-footer">
+            <p>@OnlineBooksLibrary</p>
+        </footer>
+    </div>
+</body>
+
+</html>

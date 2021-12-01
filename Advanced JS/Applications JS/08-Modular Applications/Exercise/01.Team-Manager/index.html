@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/site.css">
+    <link rel="stylesheet" href="/static/layout.css">
+    <link rel="stylesheet" href="/static/modal.css">
+    <title>Team Manager</title>
+    <script type="module" src="/src/app.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <header id="titlebar" class="layout">
+            <a href="/home" class="site-logo">Team Manager</a>
+            <nav id="nav-content">
+                <a href="/teams" class="action">Browse Teams</a>
+                <div id="user">
+                    <a href="/my-teams" class="action">My Teams</a>
+                    <a id="logoutBtn" href="javascript:void(0)" class="action">Logout</a>
+                </div>
+                <div id="guest">
+                    <a href="/users/login" class="action">Login</a>
+                    <a href="/users/register" class="action">Register</a>
+                </div>
+            </nav>
+        </header>
+        <main id="container">
+        </main>
+        <footer id="footer">
+            SoftUni &copy; 2014-2021
+        </footer>
+    </div>
+</body>
+
+</html>

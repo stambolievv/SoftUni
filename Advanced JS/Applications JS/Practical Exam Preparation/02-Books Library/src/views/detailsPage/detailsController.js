@@ -23,6 +23,8 @@ async function detailsModel(ctx) {
 
     async function onLike() {
         await likeBook({ bookId: book._id });
+
+        ctx.page.redirect(`/details/${book._id}`);
     }
 
     async function onDelete() {

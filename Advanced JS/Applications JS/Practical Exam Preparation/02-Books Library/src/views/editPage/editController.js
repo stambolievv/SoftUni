@@ -20,7 +20,7 @@ async function editModel(ctx) {
 
             await updateBook(bookId, data);
 
-            ctx.showNotify('Book was edited!', 'loadingBox');
+            ctx.showNotify(`${book.title} was successfully updated!`, 'loadingBox');
             ctx.page.redirect('/home');
         } catch (err) {
             const errors = {

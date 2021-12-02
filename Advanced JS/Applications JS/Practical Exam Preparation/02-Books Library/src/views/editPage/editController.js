@@ -21,8 +21,8 @@ async function editModel(ctx) {
 
             await updateBook(memeId, data);
 
-            showNotify('Meme was edited!', 'loadingBox');
-            ctx.page.redirect(`/details/${memeId}`);
+            showNotify('Book was edited!', 'loadingBox');
+            ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
                 message: err.message || err.errorMsg.message,

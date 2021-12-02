@@ -17,7 +17,7 @@ export function loginPage(ctx) {
             await login(data);
 
             ctx.updateNavigation();
-            ctx.page.redirect('/all-memes');
+            ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
                 message: err.message || err.errorMsg.message,

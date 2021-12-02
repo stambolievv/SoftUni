@@ -1,4 +1,6 @@
-@import 'typography.css';
-@import 'forms.css';
-@import 'navigation.css';
-@import 'all.css';
+@import "typography.css";
+@import "forms.css";
+@import "navigation.css";
+@import "all.css";
+
+@import "./myStyles/spinner.css";

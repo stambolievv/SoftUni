@@ -16,8 +16,8 @@ export function createPage(ctx) {
 
             await createBook(data);
 
-            showNotify('You successfully created a meme.', 'infoBox');
-            ctx.page.redirect('/all-memes');
+            showNotify('You successfully created a book.', 'infoBox');
+            ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
                 message: err.message || err.errorMsg.message,

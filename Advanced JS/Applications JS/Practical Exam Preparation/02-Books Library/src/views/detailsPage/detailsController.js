@@ -14,11 +14,11 @@ async function detailsModel(ctx) {
     return { meme, isOwner, onDelete };
 
     async function onDelete() {
-        const confirmed = confirm('Are you sure you want to permanently delete this meme?');
+        const confirmed = confirm('Are you sure you want to permanently delete this book?');
         if (confirmed) {
             await deleteBook(meme._id);
 
-            ctx.page.redirect('/all-memes');
+            ctx.page.redirect('/home');
         }
     }
 }

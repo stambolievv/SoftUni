@@ -12,12 +12,12 @@ export function registerPage(ctx) {
         e.preventDefault();
 
         try {
-            const data = formDataHandler(e.target, 'email', 'username', 'gender', 'password', 'repeatPass');
+            const data = formDataHandler(e.target, 'email', 'password', 'confirm-pass');
 
             await register(data);
 
             ctx.updateNavigation();
-            ctx.page.redirect('/all-memes');
+            ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
                 message: err.message || err.errorMsg.message,

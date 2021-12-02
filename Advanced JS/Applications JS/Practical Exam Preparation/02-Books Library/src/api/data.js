@@ -15,7 +15,7 @@ const removeUserData = () => sessionStorage.removeItem(userKey);
 const endpoints = {
     allBooks: '/data/books?sortBy=_createdOn%20desc',
     bookById: (id) => `/data/books/${id}`,
-    myBooks: (id) => `/data/books/${id}`,
+    myBooks: (id) => `/data/books?where=_ownerId%3D%22${id}%22&sortBy=_createdOn%20desc`,
     createBook: '/data/books',
     updateBook: (id) => `/data/books/${id}`,
     deleteBook: (id) => `/data/books/${id}`,

@@ -3,7 +3,7 @@ import { html } from '../../lib/lib.js';
 export const template = (onSubmit, errors) => html`
     <!-- Login Page ( Only for Guest users ) -->
     <section id="login-page" class="login">
-        <form id="login-form" action="" method="">
+        <form @submit=${onSubmit} id="login-form" action="" method="">
             <fieldset>
                 <legend>Login Form</legend>
                 <p class="field">

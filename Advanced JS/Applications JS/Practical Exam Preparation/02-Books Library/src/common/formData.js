@@ -9,7 +9,7 @@ function formDataHandler(form, ...fields) {
 
     const errors = Object
         .entries(inputs)
-        .reduce((a, [k, v]) => Object.assign(a, { [k]: (k != 'gender' && v == '') }), {});
+        .reduce((a, [k, v]) => Object.assign(a, { [k]: (k != '' && v == '') }), {});
 
     const missing = Object
         .values(errors)

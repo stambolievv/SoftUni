@@ -8,15 +8,19 @@ export function detailsPage(ctx) {
 async function detailsModel(ctx) {
     const userData = ctx.getUserData();
 
-    const meme = await detailsBook(ctx.params.id);
-    const isOwner = (userData && meme._ownerId == userData.id);
+    const book = await detailsBook(ctx.params.id);
+    const isOwner = (userData && book._ownerId == userData.id);
 
-    return { meme, isOwner, onDelete };
+    return { book, isOwner, actions: { onLike, onDelete } };
+
+    function onLike() {
+        console.log('like');
+    }
 
     async function onDelete() {
-        const confirmed = confirm('Are you sure you want to permanently delete this book?');
+        const confirmed = confirm(`Are you sure you want to permanently delete ${book.title}?`);
         if (confirmed) {
-            await deleteBook(meme._id);
+            await deleteBook(book._id);
 
             ctx.page.redirect('/home');
         }

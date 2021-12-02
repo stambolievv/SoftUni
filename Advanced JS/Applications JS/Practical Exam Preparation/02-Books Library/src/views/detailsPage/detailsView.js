@@ -1,34 +1,53 @@
 import { html, until, nothing } from '../../lib/lib.js';
 import { spinner } from '../../common/spinner.js';
 
-export const template = (memePromise) => html`
-    <!-- Details Meme Page (for guests and logged users) -->
-    <section id="meme-details">
-        ${until(loadData(memePromise), spinner())}
+export const template = (bookPromise) => html`
+    <!-- Details Page ( for Guests and Users ) -->
+    <section id="details-page" class="details">
+        ${until(loadData(bookPromise), spinner())}
     </section>
 `;
 
-const memeCard = (meme, isOwner, onDelete) => html`
-    <h1>Meme Title: ${meme.title}</h1>
-    <div class="meme-details">
-        <div class="meme-img">
-            <img alt="meme-alt" src=${meme.imageUrl}>
+const bookCard = (book, isOwner, actions) => html`
+    <div class="book-information">
+        <h3>${book.title}</h3>
+        <p class="type">Type: ${book.type}</p>
+        <p class="img"><img src=${book.imageUrl}></p>
+        <div class="actions">
+            ${controlsTemplate(book, isOwner, actions)}
         </div>
-        <div class="meme-description">
-            <h2>Meme Description</h2>
-            <p>${meme.description}</p>
-            ${isOwner ? controlsTemplate(meme, onDelete) : nothing}
-        </div>
+    </div>
+    <div class="book-description">
+        <h3>Description:</h3>
+        <p>${book.description}</p>
     </div>
 `;
 
-const controlsTemplate = (meme, onDelete) => html`
-    <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
-    <a class="button warning" href="/edit/${meme._id}">Edit</a>
-    <button @click=${onDelete} class="button danger">Delete</button>
+const controlsTemplate = (book, isOwner, actions) => html`
+    ${isOwner ? redactCard(book, actions.onDelete) : nothing}
+    ${likeCard(actions.onLike)}
 `;
 
-async function loadData(memePromise) {
-    const data = await memePromise;
-    return memeCard(data.meme, data.isOwner, data.onDelete);
+const redactCard = (book, onDelete) => html`
+    <!-- Edit/Delete buttons ( Only for creator of this book )  -->
+    <a class="button" href="/edit/${book._id}">Edit</a>
+    <a @click=${onDelete} class="button" href="javascript:void(0)">Delete</a>
+`;
+
+const likeCard = (onLike) => html`
+    <!-- Bonus -->
+    <!-- Like button ( Only for logged-in users, which is not creators of the current book ) -->
+    <a @click=${onLike} class="button" href="javascript:void(0)">Like</a>
+    
+    <!-- ( for Guests and Users )  -->
+    <div class="likes">
+        <img class="hearts" src="/images/heart.png">
+        <span id="total-likes">Likes: 0</span>
+    </div>
+    <!-- Bonus -->
+`;
+
+async function loadData(bookPromise) {
+    const data = await bookPromise;
+    return bookCard(data.book, data.isOwner, data.actions);
 }

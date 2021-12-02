@@ -21,7 +21,7 @@ async function editModel(ctx) {
             await updateBook(bookId, data);
 
             ctx.showNotify(`${book.title} was successfully updated!`, 'loadingBox');
-            ctx.page.redirect('/home');
+            ctx.page.redirect(`/details/${book._id}`);
         } catch (err) {
             const errors = {
                 message: err.message || err.errorMsg.message,

@@ -19,8 +19,16 @@ export function decorateContext(ctx, next) {
     ctx.getUserData = getUserData;
     ctx.showModal = showModal;
     ctx.showNotify = showNotify;
+    ctx.ownerUserOnly = ownerUserOnly;
 
     next();
+}
+
+function ownerUserOnly(item) {
+    const userData = getUserData();
+    if (userData && item._ownerId != userData.id) {
+        return page.redirect('/home');
+    }
 }
 
 function updateNavigation() {

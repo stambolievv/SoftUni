@@ -5,19 +5,23 @@ export const template = (bookPromise) => html`
     <!-- Dashboard Page ( for Guests and Users ) -->
     <section id="dashboard-page" class="dashboard">
         <h1>Dashboard</h1>
-        <ul class="other-books-list">
-            ${until(loadData(bookPromise), spinner())}
-        </ul>
+        ${until(loadData(bookPromise), spinner())}
     </section>
 `;
 
-const bookCard = (book) => html`
+const booksTemplate = (books) => html`
     <!-- Display ul: with list-items for All books (If any) -->
+    <ul class="other-books-list">
+        ${books.map(bookCard)}
+    </ul>
+`;
+
+const bookCard = (book) => html`
     <li class="otherBooks">
         <h3>${book.title}</h3>
         <p>Type: ${book.type}</p>
         <p class="img"><img src=${book.imageUrl}></p>
-        <a class="button" href="/details?${book._id}">Details</a>
+        <a class="button" href="/details/${book._id}">Details</a>
     </li>
 `;
 
@@ -29,5 +33,5 @@ const noBooksCard = () => html`
 async function loadData(bookPromise) {
     const data = await bookPromise;
     if (data.length == 0) { return noBooksCard(); }
-    return data.map(bookCard);
+    return booksTemplate(data);
 }

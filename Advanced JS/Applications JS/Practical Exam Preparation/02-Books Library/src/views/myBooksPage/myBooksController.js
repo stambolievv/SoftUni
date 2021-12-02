@@ -7,7 +7,7 @@ export function myBooksPage(ctx) {
 
 async function myBooksModel(ctx) {
     const userData = ctx.getUserData();
-    const book = await getMyBooks(userData.id);
+    const books = await getMyBooks(userData.id);
 
-    return { book, userData };
+    return books;
 }

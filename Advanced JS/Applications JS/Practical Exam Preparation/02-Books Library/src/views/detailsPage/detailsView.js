@@ -8,13 +8,13 @@ export const template = (bookPromise) => html`
     </section>
 `;
 
-const bookCard = (book, isOwner, actions) => html`
+const bookCard = (book, info, actions) => html`
     <div class="book-information">
         <h3>${book.title}</h3>
         <p class="type">Type: ${book.type}</p>
         <p class="img"><img src=${book.imageUrl}></p>
         <div class="actions">
-            ${controlsTemplate(book, isOwner, actions)}
+            ${controlsTemplate(book, info, actions)}
         </div>
     </div>
     <div class="book-description">
@@ -23,9 +23,9 @@ const bookCard = (book, isOwner, actions) => html`
     </div>
 `;
 
-const controlsTemplate = (book, isOwner, actions) => html`
-    ${isOwner ? redactCard(book, actions.onDelete) : nothing}
-    ${likeCard(actions.onLike)}
+const controlsTemplate = (book, info, actions) => html`
+    ${info.isOwner ? redactCard(book, actions.onDelete) : nothing}
+    ${likeCard(info.likes, info.showLike, actions.onLike)}
 `;
 
 const redactCard = (book, onDelete) => html`
@@ -34,20 +34,22 @@ const redactCard = (book, onDelete) => html`
     <a @click=${onDelete} class="button" href="javascript:void(0)">Delete</a>
 `;
 
-const likeCard = (onLike) => html`
+const likeCard = (likes, showLike, onLike) => html`
     <!-- Bonus -->
     <!-- Like button ( Only for logged-in users, which is not creators of the current book ) -->
-    <a @click=${onLike} class="button" href="javascript:void(0)">Like</a>
-    
+    ${showLike
+        ? html`<a @click=${onLike} class="button" href="javascript:void(0)">Like</a>`
+        : nothing
+    }
     <!-- ( for Guests and Users )  -->
     <div class="likes">
         <img class="hearts" src="/images/heart.png">
-        <span id="total-likes">Likes: 0</span>
+        <span id="total-likes">Likes: ${likes}</span>
     </div>
     <!-- Bonus -->
 `;
 
 async function loadData(bookPromise) {
     const data = await bookPromise;
-    return bookCard(data.book, data.isOwner, data.actions);
+    return bookCard(data.book, data.info, data.actions);
 }

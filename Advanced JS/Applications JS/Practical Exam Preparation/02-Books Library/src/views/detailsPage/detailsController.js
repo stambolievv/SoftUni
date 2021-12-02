@@ -1,4 +1,6 @@
 import { detailsBook, deleteBook } from '../../api/data.js';
+import { likeBook, allLikesOfBook, getMyLikeOfBook } from '../../api/data.js';
+
 import { template } from './detailsView.js';
 
 export function detailsPage(ctx) {
@@ -8,13 +10,19 @@ export function detailsPage(ctx) {
 async function detailsModel(ctx) {
     const userData = ctx.getUserData();
 
-    const book = await detailsBook(ctx.params.id);
+    const [book, likes, hasLike] = await Promise.all([
+        detailsBook(ctx.params.id),
+        allLikesOfBook(ctx.params.id),
+        userData ? getMyLikeOfBook(ctx.params.id, userData.id) : 0
+    ]);
+
     const isOwner = (userData && book._ownerId == userData.id);
+    const showLike = userData != null && isOwner == false && hasLike == 0;
 
-    return { book, isOwner, actions: { onLike, onDelete } };
+    return { book, info: { isOwner, likes, showLike }, actions: { onLike, onDelete } };
 
-    function onLike() {
-        console.log('like');
+    async function onLike() {
+        await likeBook({ bookId: book._id });
     }
 
     async function onDelete() {

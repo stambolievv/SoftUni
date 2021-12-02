@@ -1,4 +1,4 @@
-import { register } from '../../api/api.js';
+import { register } from '../../api/data.js';
 import { formDataHandler } from '../../common/formData.js';
 import { template } from './registerView.js';
 

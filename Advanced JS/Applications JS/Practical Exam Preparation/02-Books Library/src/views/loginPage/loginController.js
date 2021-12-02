@@ -1,4 +1,4 @@
-import { login } from '../../api/api.js';
+import { login } from '../../api/data.js';
 import { formDataHandler } from '../../common/formData.js';
 import { template } from './loginView.js';
 

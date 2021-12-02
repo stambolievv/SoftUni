@@ -13,35 +13,35 @@ const removeUserData = () => sessionStorage.removeItem(userKey);
 
 // DB requests
 const endpoints = {
-    allMemes: '/data/memes?sortBy=_createdOn%20desc',
-    memeById: (id) => `/data/memes/${id}`,
-    createMeme: '/data/memes',
-    editMeme: (id) => `/data/memes/${id}`,
-    deleteMeme: (id) => `/data/memes/${id}`,
-    detailsMeme: (id) => `/data/memes/${id}`,
-    myProfile: (id) => `/data/memes?where=_ownerId%3D%22${id}%22&sortBy=_createdOn%20desc`,
+    allBooks: '/data/books?sortBy=_createdOn%20desc',
+    bookById: (id) => `/data/books/${id}`,
+    myBooks: (id) => `/data/books/${id}`,
+    createBook: '/data/books',
+    updateBook: (id) => `/data/books/${id}`,
+    deleteBook: (id) => `/data/books/${id}`,
+    detailsBook: (id) => `/data/books/${id}`,
 };
 
-async function getAllMemes() {
-    return api.get(endpoints.allMemes);
+async function getAllBooks() {
+    return api.get(endpoints.allBooks);
 }
-async function getMemeById(memeId) {
-    return api.get(endpoints.memeById(memeId));
+async function getBookById(bookId) {
+    return api.get(endpoints.bookById(bookId));
 }
-async function createMeme(data) {
-    return api.post(endpoints.createMeme, data);
+async function getMyBooks(userId) {
+    return api.get(endpoints.myBooks(userId));
 }
-async function editMeme(memeId, data) {
-    return api.put(endpoints.editMeme(memeId), data);
+async function createBook(data) {
+    return api.post(endpoints.createBook, data);
 }
-async function deleteMeme(memeId) {
-    return api.del(endpoints.deleteMeme(memeId));
+async function updateBook(bookId, data) {
+    return api.put(endpoints.updateBook(bookId), data);
 }
-async function detailsMeme(memeId) {
-    return api.get(endpoints.detailsMeme(memeId));
+async function deleteBook(bookId) {
+    return api.del(endpoints.deleteBook(bookId));
 }
-async function getMyProfile(userId) {
-    return api.get(endpoints.myProfile(userId));
+async function detailsBook(bookId) {
+    return api.get(endpoints.detailsBook(bookId));
 }
 
 export {
@@ -51,11 +51,11 @@ export {
     getUserData,
     setUserData,
     removeUserData,
-    getAllMemes,
-    getMemeById,
-    createMeme,
-    editMeme,
-    deleteMeme,
-    detailsMeme,
-    getMyProfile
+    getAllBooks,
+    getBookById,
+    getMyBooks,
+    createBook,
+    updateBook,
+    deleteBook,
+    detailsBook
 };

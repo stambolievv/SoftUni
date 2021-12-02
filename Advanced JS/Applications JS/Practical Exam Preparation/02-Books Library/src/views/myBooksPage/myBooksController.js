@@ -1,4 +1,4 @@
-import { getMyProfile } from '../../api/data.js';
+import { getMyBooks } from '../../api/data.js';
 import { template } from './myBooksView.js';
 
 export function myBooksPage(ctx) {
@@ -7,7 +7,7 @@ export function myBooksPage(ctx) {
 
 async function myBooksModel(ctx) {
     const userData = ctx.getUserData();
-    const book = await getMyProfile(userData.id);
+    const book = await getMyBooks(userData.id);
 
     return { book, userData };
 }

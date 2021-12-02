@@ -1,4 +1,4 @@
-import { detailsMeme, deleteMeme } from '../../api/data.js';
+import { detailsBook, deleteBook } from '../../api/data.js';
 import { template } from './detailsView.js';
 
 export function detailsPage(ctx) {
@@ -8,7 +8,7 @@ export function detailsPage(ctx) {
 async function detailsModel(ctx) {
     const userData = ctx.getUserData();
 
-    const meme = await detailsMeme(ctx.params.id);
+    const meme = await detailsBook(ctx.params.id);
     const isOwner = (userData && meme._ownerId == userData.id);
 
     return { meme, isOwner, onDelete };
@@ -16,7 +16,7 @@ async function detailsModel(ctx) {
     async function onDelete() {
         const confirmed = confirm('Are you sure you want to permanently delete this meme?');
         if (confirmed) {
-            await deleteMeme(meme._id);
+            await deleteBook(meme._id);
 
             ctx.page.redirect('/all-memes');
         }

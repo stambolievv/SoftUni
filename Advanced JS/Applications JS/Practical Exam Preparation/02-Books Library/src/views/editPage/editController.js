@@ -1,4 +1,4 @@
-import { getMemeById, editMeme } from '../../api/data.js';
+import { getBookById, updateBook } from '../../api/data.js';
 import { showNotify } from '../../common/notify.js';
 import { formDataHandler } from '../../common/formData.js';
 import { template } from './editView.js';
@@ -9,7 +9,7 @@ export function editPage(ctx) {
 
 async function editModel(ctx) {
     const memeId = ctx.params.id;
-    const meme = await getMemeById(memeId);
+    const meme = await getBookById(memeId);
 
     return { meme, onSubmit };
 
@@ -19,7 +19,7 @@ async function editModel(ctx) {
         try {
             const data = formDataHandler(e.target, 'title', 'imageUrl', 'description');
 
-            await editMeme(memeId, data);
+            await updateBook(memeId, data);
 
             showNotify('Meme was edited!', 'loadingBox');
             ctx.page.redirect(`/details/${memeId}`);

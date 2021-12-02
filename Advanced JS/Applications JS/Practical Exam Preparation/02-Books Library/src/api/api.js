@@ -64,8 +64,6 @@ async function login(data, path = '/users/login') {
 
     const userData = JSON.stringify({
         email: result.email,
-        username: result.username,
-        gender: result.gender,
         id: result._id,
         token: result.accessToken
     });
@@ -79,8 +77,6 @@ async function register(data, path = '/users/register') {
 
     const userData = JSON.stringify({
         email: result.email,
-        username: result.username,
-        gender: result.gender,
         id: result._id,
         token: result.accessToken
     });

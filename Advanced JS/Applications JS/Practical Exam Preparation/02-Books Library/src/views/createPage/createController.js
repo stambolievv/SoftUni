@@ -1,4 +1,4 @@
-import { createMeme } from '../../api/data.js';
+import { createBook } from '../../api/data.js';
 import { formDataHandler } from '../../common/formData.js';
 import { showNotify } from '../../common/notify.js';
 import { template } from './createView.js';
@@ -14,7 +14,7 @@ export function createPage(ctx) {
         try {
             const data = formDataHandler(e.target, 'title', 'description', 'imageUrl');
 
-            await createMeme(data);
+            await createBook(data);
 
             showNotify('You successfully created a meme.', 'infoBox');
             ctx.page.redirect('/all-memes');

@@ -9,6 +9,10 @@
   },
   "author": "DKS",
   "license": "ISC",
+  "dependencies": {
+    "lit-html": "^2.0.2",
+    "page": "^1.11.6"
+  },
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
@@ -16,9 +20,5 @@
     "http-server": "^0.12.3",
     "mocha": "^9.1.2",
     "playwright": "^1.16.3"
-  },
-  "dependencies": {
-    "lit-html": "^2.0.2",
-    "page": "^1.11.6"
   }
 }

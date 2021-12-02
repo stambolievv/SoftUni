@@ -11,7 +11,7 @@ export function createPage(ctx) {
         e.preventDefault();
 
         try {
-            const data = formDataHandler(e.target, 'title', 'description', 'imageUrl');
+            const data = formDataHandler(e.target, 'title', 'description', 'imageUrl', 'type');
 
             await createBook(data);
 

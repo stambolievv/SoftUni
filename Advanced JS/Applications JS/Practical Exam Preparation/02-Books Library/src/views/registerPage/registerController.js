@@ -24,7 +24,6 @@ export function registerPage(ctx) {
                 data: err.errorData || {}
             };
             ctx.showNotify(errors.message, 'errorBox');
-            console.log(errors);
             update(errors);
         }
     }

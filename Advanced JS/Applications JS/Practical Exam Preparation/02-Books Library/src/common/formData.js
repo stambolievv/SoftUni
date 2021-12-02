@@ -17,8 +17,8 @@ function formDataHandler(form, ...fields) {
 
     if (missing > 0) { handleError('All fields must be filled!'); }
 
-    if (inputs.password != inputs.repeatPass && inputs.repeatPass) {
-        Object.assign(errors, { password: true, repeatPass: true });
+    if (inputs.password != inputs['confirm-pass'] && inputs['confirm-pass']) {
+        Object.assign(errors, { password: true, 'confirm-pass': true });
         handleError('Passwords does not match!');
     }
 

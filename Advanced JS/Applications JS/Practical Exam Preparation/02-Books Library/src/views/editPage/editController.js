@@ -7,18 +7,18 @@ export function editPage(ctx) {
 }
 
 async function editModel(ctx) {
-    const memeId = ctx.params.id;
-    const meme = await getBookById(memeId);
+    const bookId = ctx.params.id;
+    const book = await getBookById(bookId);
 
-    return { meme, onSubmit };
+    return { book, onSubmit };
 
     async function onSubmit(e) {
         e.preventDefault();
 
         try {
-            const data = formDataHandler(e.target, 'title', 'imageUrl', 'description');
+            const data = formDataHandler(e.target, 'title', 'imageUrl', 'description', 'type');
 
-            await updateBook(memeId, data);
+            await updateBook(bookId, data);
 
             ctx.showNotify('Book was edited!', 'loadingBox');
             ctx.page.redirect('/home');

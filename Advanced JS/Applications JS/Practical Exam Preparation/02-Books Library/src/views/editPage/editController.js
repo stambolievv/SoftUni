@@ -10,6 +10,8 @@ async function editModel(ctx) {
     const bookId = ctx.params.id;
     const book = await getBookById(bookId);
 
+    ctx.ownerUserOnly(book);
+
     return { book, onSubmit };
 
     async function onSubmit(e) {

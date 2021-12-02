@@ -20,6 +20,9 @@ const endpoints = {
     updateBook: (id) => `/data/books/${id}`,
     deleteBook: (id) => `/data/books/${id}`,
     detailsBook: (id) => `/data/books/${id}`,
+    likeBook: '/data/likes',
+    likesOfBook: (id) => `/data/likes?where=bookId%3D%22${id}%22&distinct=_ownerId&count`,
+    myLikeOfBook: (bookId, userId) => `/data/likes?where=bookId%3D%22${bookId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
 };
 
 async function getAllBooks() {
@@ -43,6 +46,15 @@ async function deleteBook(bookId) {
 async function detailsBook(bookId) {
     return api.get(endpoints.detailsBook(bookId));
 }
+async function likeBook(bookId) {
+    return api.post(endpoints.likeBook, bookId);
+}
+async function allLikesOfBook(bookId) {
+    return api.get(endpoints.likesOfBook(bookId));
+}
+async function getMyLikeOfBook(bookId, userId) {
+    return api.get(endpoints.myLikeOfBook(bookId, userId));
+}
 
 export {
     login,
@@ -57,5 +69,8 @@ export {
     createBook,
     updateBook,
     deleteBook,
-    detailsBook
+    detailsBook,
+    likeBook,
+    allLikesOfBook,
+    getMyLikeOfBook
 };

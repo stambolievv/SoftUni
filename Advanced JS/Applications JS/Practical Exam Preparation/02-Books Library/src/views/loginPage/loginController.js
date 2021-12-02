@@ -1,5 +1,4 @@
 import { login } from '../../api/api.js';
-import { showNotify } from '../../common/notify.js';
 import { formDataHandler } from '../../common/formData.js';
 import { template } from './loginView.js';
 
@@ -24,7 +23,7 @@ export function loginPage(ctx) {
                 type: err.errorType || {},
                 data: err.errorData || {}
             };
-            showNotify(errors.message, 'errorBox');
+            ctx.showNotify(errors.message, 'errorBox');
             update(errors);
         }
     }

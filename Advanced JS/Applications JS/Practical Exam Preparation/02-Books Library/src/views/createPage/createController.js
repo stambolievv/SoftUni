@@ -1,6 +1,5 @@
 import { createBook } from '../../api/data.js';
 import { formDataHandler } from '../../common/formData.js';
-import { showNotify } from '../../common/notify.js';
 import { template } from './createView.js';
 
 export function createPage(ctx) {
@@ -16,7 +15,7 @@ export function createPage(ctx) {
 
             await createBook(data);
 
-            showNotify('You successfully created a book.', 'infoBox');
+            ctx.showNotify('You successfully created a book.', 'infoBox');
             ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
@@ -24,7 +23,7 @@ export function createPage(ctx) {
                 type: err.errorType || {},
                 data: err.errorData || {}
             };
-            showNotify(errors.message, 'errorBox');
+            ctx.showNotify(errors.message, 'errorBox');
             update(errors);
         }
     }

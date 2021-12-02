@@ -1,5 +1,4 @@
 import { getBookById, updateBook } from '../../api/data.js';
-import { showNotify } from '../../common/notify.js';
 import { formDataHandler } from '../../common/formData.js';
 import { template } from './editView.js';
 
@@ -21,7 +20,7 @@ async function editModel(ctx) {
 
             await updateBook(memeId, data);
 
-            showNotify('Book was edited!', 'loadingBox');
+            ctx.showNotify('Book was edited!', 'loadingBox');
             ctx.page.redirect('/home');
         } catch (err) {
             const errors = {
@@ -29,7 +28,7 @@ async function editModel(ctx) {
                 type: err.errorType || {},
                 data: err.errorData || {}
             };
-            showNotify(errors.message, 'errorBox');
+            ctx.showNotify(errors.message, 'errorBox');
             // update(errors.type);
         }
     }

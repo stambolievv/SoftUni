@@ -26,12 +26,12 @@ export function decorateContext(ctx, next) {
 function updateNavigation() {
     const user = getUserData();
     if (user) {
-        root.userNav.style.display = 'block';
+        root.userNav.style.display = 'inline-block';
         root.guestNav.style.display = 'none';
         root.welcomeSpan.textContent = `Welcome, ${user.email}`;
     } else {
         root.userNav.style.display = 'none';
-        root.guestNav.style.display = 'block';
+        root.guestNav.style.display = 'inline-block';
     }
 }
 

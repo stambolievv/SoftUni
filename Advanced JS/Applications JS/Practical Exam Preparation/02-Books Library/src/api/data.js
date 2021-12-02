@@ -23,6 +23,7 @@ const endpoints = {
     likeBook: '/data/likes',
     likesOfBook: (id) => `/data/likes?where=bookId%3D%22${id}%22&distinct=_ownerId&count`,
     myLikeOfBook: (bookId, userId) => `/data/likes?where=bookId%3D%22${bookId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
+    searchBook: (query) => `/data/books?where=${encodeURIComponent(`title LIKE "${query}"`)}`,
 };
 
 async function getAllBooks() {
@@ -55,6 +56,9 @@ async function allLikesOfBook(bookId) {
 async function getMyLikeOfBook(bookId, userId) {
     return api.get(endpoints.myLikeOfBook(bookId, userId));
 }
+async function searchBook(query) {
+    return api.get(endpoints.searchBook(query));
+}
 
 export {
     login,
@@ -72,5 +76,6 @@ export {
     detailsBook,
     likeBook,
     allLikesOfBook,
-    getMyLikeOfBook
+    getMyLikeOfBook,
+    searchBook
 };

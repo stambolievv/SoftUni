@@ -1,0 +1,4 @@
+input.error,
+textarea.error {
+  background-color: rgba(249, 211, 211, 1);
+}

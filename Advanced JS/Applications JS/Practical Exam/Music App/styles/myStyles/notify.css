@@ -1,8 +1,8 @@
 #notifications {
   float: right;
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 10vh;
+  right: 2%;
   text-align: center;
   margin: 1em;
 }
@@ -21,11 +21,11 @@
 }
 
 #loadingBox > span {
-  background: #7cb3e9;
+  background: cadetblue;
 }
 #infoBox > span {
-  background: #393;
+  background: mediumseagreen;
 }
 #errorBox > span {
-  background: #f50;
+  background: lightsalmon;
 }

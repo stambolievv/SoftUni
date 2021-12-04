@@ -22,6 +22,7 @@ export function showNotify(message, type = 'errorBox') {
                 div.style.opacity -= 0.05;
             } else {
                 clearInterval(fadeEffect);
+                span.remove();
                 div.style.display = 'none';
             }
         }, 30);

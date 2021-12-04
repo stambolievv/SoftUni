@@ -1,5 +1,6 @@
 import { getUserData, logout } from '../api/data.js';
 import { showNotify } from '../common/notify.js';
+import { showModal } from '../common/modal.js';
 import { page, render } from '../lib/lib.js';
 
 
@@ -15,9 +16,12 @@ root.logoutBtn.addEventListener('click', onLogout);
 export function decorateContext(ctx, next) {
     ctx.render = (content) => render(content, root.container);
     ctx.updateNavigation = updateNavigation;
+
     ctx.getUserData = getUserData;
     ctx.ownerUserOnly = ownerUserOnly;
+
     ctx.showNotify = showNotify;
+    ctx.showModal = showModal;
 
     next();
 }
@@ -41,13 +45,13 @@ function updateNavigation() {
 }
 
 async function onLogout() {
-    await logout();
+    const confirmed = await showModal('Are you sure you want to log out?');
+    if (confirmed) {
+        await logout();
 
-    updateNavigation();
-    page.redirect('/home');
-    // const confirmed = await showModal('Are you sure you want to log out?');
-    // if (confirmed) {
-    // }
+        updateNavigation();
+        page.redirect('/home');
+    }
 }
 
 updateNavigation();

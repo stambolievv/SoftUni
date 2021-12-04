@@ -16,7 +16,7 @@ async function detailsModel(ctx) {
     return { album, actions: { isOwner, onDelete } };
 
     async function onDelete() {
-        const confirmed = confirm(`Are you sure you want to permanently delete ${album.name}?`);
+        const confirmed = await ctx.showModal(`Are you sure you want to permanently delete ${album.name}?`);
         if (confirmed) {
             await deleteAlbum(album._id);
 

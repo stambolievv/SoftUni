@@ -22,7 +22,7 @@ async function editModel(ctx) {
 
             await updateAlbum(albumId, data);
 
-            ctx.showNotify(`You successfully edited ${album.name} album`, 'infoBox');
+            ctx.showNotify(`You successfully edited "${album.name}" album`, 'infoBox');
 
             ctx.page.redirect(`/details/${album._id}`);
         } catch (err) {
@@ -32,7 +32,6 @@ async function editModel(ctx) {
                 data: err.errorData || {}
             };
             ctx.showNotify(errors.message);
-            // update(errors);
         }
     }
 }

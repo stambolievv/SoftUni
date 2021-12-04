@@ -15,7 +15,7 @@ export function createPage(ctx) {
 
             await createAlbum(data);
 
-            ctx.showNotify(`You successfully created ${data.name} album`, 'infoBox');
+            ctx.showNotify(`You successfully created "${data.name}" album`, 'infoBox');
 
             ctx.page.redirect('/catalog');
         } catch (err) {

@@ -5,11 +5,11 @@ export async function searchPage(ctx) {
     const userData = ctx.getUserData();
     const query = ctx.querystring.split('=')[1];
 
-    let albums = [];
+    const results = { albums: [] };
 
-    if (query) { albums = await searchAlbums(decodeURIComponent(query)); }
+    if (query) { results.albums = await searchAlbums(decodeURIComponent(query)); }
 
-    ctx.render(template(albums, userData, onSubmit, query));
+    ctx.render(template(results.albums, userData, onSubmit, query));
 
     async function onSubmit(e) {
         e.preventDefault();

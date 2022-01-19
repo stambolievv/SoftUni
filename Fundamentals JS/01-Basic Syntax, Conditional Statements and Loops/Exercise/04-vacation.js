@@ -12,23 +12,15 @@ function vacation(people, type, week) {
             price *= 0.85;
         }
     } else if (type === 'Business') {
-        if (people >= 100) {
-            people -= 10;
-            if (week === 'Friday') {
-                price = 10.90 * people;
-            } else if (week === 'Saturday') {
-                price = 15.60 * people;
-            } else if (week === 'Sunday') {
-                price = 16.00 * people;
-            }
-        } else {
-            if (week === 'Friday') {
-                price = 10.90 * people;
-            } else if (week === 'Saturday') {
-                price = 15.60 * people;
-            } else if (week === 'Sunday') {
-                price = 16.00 * people;
-            }
+        if (people >= 100) { 
+            people -= 10; 
+        }
+        if (week === 'Friday') {
+            price = 10.90 * people;
+        } else if (week === 'Saturday') {
+            price = 15.60 * people;
+        } else if (week === 'Sunday') {
+            price = 16.00 * people;
         }
     } else if (type === 'Regular') {
         if (week === 'Friday') {

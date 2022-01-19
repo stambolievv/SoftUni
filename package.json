@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "chai": "^4.3.4",
     "eslint": "^v8.6.0",
     "git": "^0.1.5",
     "http-server": "^14.1.0",
